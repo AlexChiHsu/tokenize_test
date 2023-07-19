@@ -9,21 +9,26 @@ import {
 import {login} from '../../api/login/login';
 import {useAppDispatch} from '../../store/store';
 import {loginSuccess, loginFailure} from '../../store/authReducer';
+import {useNavigation} from '@react-navigation/native';
 
 const LoginScreen = () => {
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
   const handleLogin = async () => {
     const result = await login(email, password);
     try {
-      dispatch(
-        loginSuccess({
-          email: result.data.email,
-          token: result.data.token,
-        }),
-      );
+      if (result) {
+        dispatch(
+          loginSuccess({
+            email: result.data.email,
+            token: result.data.token,
+          }),
+        );
+        navigation.navigate('Home');
+      }
     } catch (error) {
       dispatch(loginFailure(result.data.message));
     }

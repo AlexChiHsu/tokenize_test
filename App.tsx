@@ -1,12 +1,12 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {store} from './src/store/store';
-import LoginScreen from './src/screen/login';
+import AppNavigator from './src/navigation/AppNavigator';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <LoginScreen />
+      <AppNavigator />
     </Provider>
   );
 };
