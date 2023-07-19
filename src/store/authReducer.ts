@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {LoginPayload} from '../types/auth';
 
 // Define the initial state using that type
@@ -6,13 +6,6 @@ const initialState: LoginPayload = {
   email: '',
   token: '',
 };
-
-export const postLogin = createAsyncThunk(
-  'user/login',
-  async (data: LoginPayload, {dispatch}) => {
-    dispatch(loginSuccess(data));
-  },
-);
 
 export const auth = createSlice({
   name: 'auth',
