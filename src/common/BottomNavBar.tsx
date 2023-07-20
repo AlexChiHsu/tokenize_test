@@ -4,7 +4,7 @@ import {Image, Tab, Text} from '@rneui/themed';
 import {useNavigation} from '@react-navigation/native';
 
 const BottomNavBar = () => {
-  const [index, setIndex] = useState(1);
+  const [index, setIndex] = useState(0);
   const navigation = useNavigation();
   const navBarList = [
     {title: 'Home', image: require('../asset/image/home.png')},
