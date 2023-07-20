@@ -1,23 +1,25 @@
 import {View} from 'react-native';
 import React from 'react';
-import {Button, Image, Input} from '@rneui/themed';
+import {Button, CheckBox, Image, Input} from '@rneui/themed';
 
 const Content = ({
   email,
   setEmail,
   password,
   setPassword,
-  handleLogin,
   isShowPassword,
   setIsShowPassword,
+  isRemember,
+  setIsRemember,
 }: {
   email: string;
   setEmail: Function;
   password: string;
   setPassword: Function;
-  handleLogin: Function;
   isShowPassword: boolean;
   setIsShowPassword: Function;
+  isRemember: boolean;
+  setIsRemember: Function;
 }) => {
   return (
     <View>
@@ -37,6 +39,7 @@ const Content = ({
           fontSize: 15,
           lineHeight: 18,
           color: '#D6E1FF',
+          fontFamily: 'Roboto',
         }}
         placeholderTextColor="#D6E1FF"
         placeholder="Email"
@@ -66,6 +69,7 @@ const Content = ({
           fontSize: 15,
           lineHeight: 18,
           color: '#D6E1FF',
+          fontFamily: 'Roboto',
         }}
         placeholder="Password"
         secureTextEntry={!isShowPassword}
@@ -86,24 +90,42 @@ const Content = ({
           />
         }
       />
-
-      <Button
-        onPress={() => handleLogin()}
-        title={'Sign in'}
-        containerStyle={{
-          paddingHorizontal: 10,
-        }}
-        buttonStyle={{
-          backgroundColor: '#BDCFFF',
-          maxHeight: 45,
-          elevation: 1.5,
-          shadowColor: '#6278F1',
-          shadowOffset: {width: 0, height: 6},
-          shadowOpacity: 0.5,
-          shadowRadius: 10,
-          borderRadius: 5,
-        }}
-      />
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+        <CheckBox
+          checked={isRemember}
+          onPress={() => setIsRemember(!isRemember)}
+          textStyle={{
+            fontSize: 14,
+            fontWeight: '500',
+            lineHeight: 21,
+            color: '#FFFFFF',
+          }}
+          fontFamily="Roboto"
+          containerStyle={{backgroundColor: 'transparent', padding: 0}}
+          uncheckedColor="#FFFFFF33"
+          checkedColor="#FFFFFF"
+          title="Remember me"
+          iconType="material-community"
+          checkedIcon="checkbox-outline"
+          uncheckedIcon={'checkbox-blank-outline'}
+        />
+        <Button
+          title="Forgot your password?"
+          type="clear"
+          titleStyle={{
+            color: '#FFFFFF',
+            fontFamily: 'Roboto',
+            fontWeight: '500',
+            fontSize: 14,
+            lineHeight: 21,
+          }}
+        />
+      </View>
     </View>
   );
 };

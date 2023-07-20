@@ -4,7 +4,7 @@ import {login} from '../../api/login/login';
 import {useAppDispatch} from '../../store/store';
 import {loginSuccess, loginFailure} from '../../store/authReducer';
 import {useNavigation} from '@react-navigation/native';
-import {Button, Image, Input} from '@rneui/themed';
+import {Image} from '@rneui/themed';
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
@@ -14,6 +14,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isRemember, setIsRemember] = useState(false);
   const navigation = useNavigation();
 
   const handleLogin = async () => {
@@ -53,11 +54,12 @@ const LoginScreen = () => {
             setEmail={setEmail}
             password={password}
             setPassword={setPassword}
-            handleLogin={handleLogin}
             isShowPassword={isShowPassword}
             setIsShowPassword={setIsShowPassword}
+            isRemember={isRemember}
+            setIsRemember={setIsRemember}
           />
-          <Footer />
+          <Footer handleLogin={handleLogin} />
         </View>
       </SafeAreaView>
     </Image>
