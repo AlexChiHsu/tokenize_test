@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
 import {store} from './src/store/store';
 import AppNavigator from './src/navigation/AppNavigator';
@@ -16,9 +16,6 @@ const theme = createTheme({
 });
 
 const App = () => {
-  useEffect(() => {
-    console.log('APP STATUS', store.getState().rootReducer);
-  }, []);
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
